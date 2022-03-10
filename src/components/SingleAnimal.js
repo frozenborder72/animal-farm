@@ -18,14 +18,13 @@ const SingleAnimal = () => {
     );
   }, [id, searchTerm]);
 
-  console.log(animal);
-
   return (
     <div>
       {!animal ? (
         <p>Loading...</p>
       ) : (
-        <img src={animal.src.original} alt={animal.alt} />
+        // <img src={animal.src.original} alt={animal.alt} />
+        <video controls src={animal.video_files[3].link}></video>
       )}
       {quote && (
         <p>

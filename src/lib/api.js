@@ -1,24 +1,27 @@
 import axios from 'axios';
 
-const animalsBaseUrl = 'https://api.pexels.com/v1/';
+const animalsBaseUrl = 'https://api.pexels.com/videos';
 
 export const getAnimals = animal =>
   axios.get(`${animalsBaseUrl}/search?query=${animal}`, {
     headers: {
-      Authorization: '563492ad6f9170000100000117a1a802fd2943dfbf315b498d67f4b0',
+      Authorization: process.env.REACT_APP_PEXELS_API_KEY,
     },
   });
 
 export const getSingleAnimal = id =>
-  axios.get(`https://api.pexels.com/v1/photos/${id}`, {
-    headers: {
-      Authorization: '563492ad6f9170000100000117a1a802fd2943dfbf315b498d67f4b0',
-    },
-  });
+  axios.get(
+    `https://cryptic-everglades-76066.herokuapp.com/${animalsBaseUrl}/videos/${id}`,
+    {
+      headers: {
+        Authorization: process.env.REACT_APP_PEXELS_API_KEY,
+      },
+    }
+  );
 
 export const getQuote = searchTerm =>
   axios.get(`https://favqs.com/api/quotes/?filter=${searchTerm}`, {
     headers: {
-      Authorization: 'Bearer 4ecbcb038f4655a19303564b621e6069',
+      Authorization: `Bearer ${process.env.REACT_APP_FAVQS_BEARER_TOKEN}`,
     },
   });
