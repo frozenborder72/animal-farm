@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { getSingleAnimal, getQuote } from '../lib/api';
+import Header from './Header';
 
 const SingleAnimal = () => {
   const { id, searchTerm } = useParams();
@@ -22,6 +23,7 @@ const SingleAnimal = () => {
     <div>
       <section className='section has-background-dark section-centered'>
         <div className='container'>
+          <Header />
           <div className='card has-background-dark'>
             <div className='video-container'>
               {!animal ? (

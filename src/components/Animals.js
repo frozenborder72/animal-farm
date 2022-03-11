@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import { getAnimals } from '../lib/api';
 import Masonry from '@mui/lab/Masonry';
 
-import birds from '../sounds/birds.mp3';
-import cats from '../sounds/cats.mp3';
-import dogs from '../sounds/dogs.mp3';
-import fish from '../sounds/fish.mp3';
-import horses from '../sounds/horses.mp3';
-import pigs from '../sounds/pigs.mp3';
+import birds from '../assets/sounds/birds.mp3';
+import cats from '../assets/sounds/cats.mp3';
+import dogs from '../assets/sounds/dogs.mp3';
+import fish from '../assets/sounds/fish.mp3';
+import horses from '../assets/sounds/horses.mp3';
+import pigs from '../assets/sounds/pigs.mp3';
+
+import farm from '../assets/images/farm.png';
 
 const sounds = { birds, cats, dogs, fish, horses, pigs };
 
@@ -50,20 +52,22 @@ const Animals = () => {
         </select>
       </div>
 
-      <section className='section'>
-        <div className='masonry-container'>
-          <Masonry columns={{ xs: 1, sm: 2 }} spacing={2}>
-            {!animalPhotos ? (
-              <p>Loading...</p>
-            ) : (
-              animalPhotos.map(photo => (
+      <section className='section section-home'>
+        {!animalPhotos ? (
+          <div className='image-container'>
+            <img src={farm} alt='' />
+          </div>
+        ) : (
+          <div className='masonry-container'>
+            <Masonry columns={{ xs: 1, sm: 2 }} spacing={2}>
+              {animalPhotos.map(photo => (
                 <Link key={photo.id} to={`/single/${photo.id}/${searchTerm}`}>
                   <img src={photo.image} alt={photo.alt} onClick={playAudio} />
                 </Link>
-              ))
-            )}
-          </Masonry>
-        </div>
+              ))}
+            </Masonry>
+          </div>
+        )}
       </section>
     </>
   );

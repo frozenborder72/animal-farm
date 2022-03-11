@@ -1,5 +1,28 @@
 @import '~bulma/bulma.sass';
 
+.bubble-image {
+  display: block;
+  margin-inline: auto;
+  max-width: 150px;
+  margin-top: 50px;
+}
+
+.image-container {
+  margin-inline: auto;
+  max-width: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+
+  img {
+    width: 100%;
+  }
+}
+
+.title {
+  color: #ddd;
+}
+
 .masonry-container {
   width: 90%;
   max-width: 900px;
@@ -11,6 +34,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.section-home {
+  align-items: flex-start;
 }
 
 .video-container {
