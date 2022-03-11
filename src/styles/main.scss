@@ -1,1 +1,42 @@
 @import '~bulma/bulma.sass';
+
+.masonry-container {
+  width: 90%;
+  max-width: 900px;
+  margin-inline: auto;
+}
+
+.section {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-container {
+  max-width: 600px;
+  margin-inline: auto;
+
+  video {
+    margin-bottom: 2em;
+  }
+}
+
+.card {
+  color: #ddd;
+  box-shadow: none;
+}
+
+.card-content {
+  margin-bottom: 3em;
+}
+
+body {
+  min-height: 100vh;
+  background-color: #363636;
+}
+
+.quote {
+  font-size: 1.2rem;
+  margin-bottom: 1em;
+}

@@ -20,18 +20,34 @@ const SingleAnimal = () => {
 
   return (
     <div>
-      {!animal ? (
-        <p>Loading...</p>
-      ) : (
-        // <img src={animal.src.original} alt={animal.alt} />
-        <video controls src={animal.video_files[3].link}></video>
-      )}
-      {quote && (
-        <p>
-          {quote.body}, {quote.author}
-        </p>
-      )}
-      <Link to='/'>Go back</Link>
+      <section className='section has-background-dark section-centered'>
+        <div className='container'>
+          <div className='card has-background-dark'>
+            <div className='video-container'>
+              {!animal ? (
+                <p>Loading...</p>
+              ) : (
+                <video controls src={animal.video_files[3].link}></video>
+              )}
+              {quote && (
+                <>
+                  <div className='card-content'>
+                    <p className='quote'>{quote.body}</p>
+                    <p>
+                      <em>{quote.author}</em>
+                    </p>
+                  </div>
+                  <div className='card-footer'>
+                    <div className='card-footer-item button'>
+                      <Link to='/'>Home</Link>
+                    </div>
+                  </div>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };

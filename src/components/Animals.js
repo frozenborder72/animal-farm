@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getAnimals } from '../lib/api';
+import Masonry from '@mui/lab/Masonry';
 
 import birds from '../sounds/birds.mp3';
 import cats from '../sounds/cats.mp3';
@@ -33,29 +34,37 @@ const Animals = () => {
 
   return (
     <>
-      <select name='animal' onChange={handleChange}>
-        <option>Select an animal</option>
-        <option value='dogs'>Dogs</option>
-        <option value='cats'>Cats</option>
-        <option value='birds'>Birds</option>
-        <option value='fish'>Fish</option>
-        <option value='horses'>Horses</option>
-        <option value='pigs'>Pigs</option>
-      </select>
+      <div className='select is-rounded is-medium '>
+        <select
+          className='select has-text-white has-background-dark'
+          name='animal'
+          onChange={handleChange}
+        >
+          <option>Select an animal</option>
+          <option value='dogs'>Dogs</option>
+          <option value='cats'>Cats</option>
+          <option value='birds'>Birds</option>
+          <option value='fish'>Fish</option>
+          <option value='horses'>Horses</option>
+          <option value='pigs'>Pigs</option>
+        </select>
+      </div>
 
-      {!animalPhotos ? (
-        <p>Loading...</p>
-      ) : (
-        animalPhotos.map(photo => (
-          <Link key={photo.id} to={`/single/${photo.id}/${searchTerm}`}>
-            <img
-              src={photo.video_pictures[0].picture}
-              alt={photo.alt}
-              onClick={playAudio}
-            />
-          </Link>
-        ))
-      )}
+      <section className='section'>
+        <div className='masonry-container'>
+          <Masonry columns={{ xs: 1, sm: 2 }} spacing={2}>
+            {!animalPhotos ? (
+              <p>Loading...</p>
+            ) : (
+              animalPhotos.map(photo => (
+                <Link key={photo.id} to={`/single/${photo.id}/${searchTerm}`}>
+                  <img src={photo.image} alt={photo.alt} onClick={playAudio} />
+                </Link>
+              ))
+            )}
+          </Masonry>
+        </div>
+      </section>
     </>
   );
 };
