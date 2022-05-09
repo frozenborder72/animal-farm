@@ -22,10 +22,7 @@ const Animals = () => {
 
   useEffect(() => {
     searchTerm &&
-      getAnimals(searchTerm).then(({ data }) =>
-        // setAnimalPhotos([...data.photos])
-        setAnimalPhotos(data.videos)
-      );
+      getAnimals(searchTerm).then(({ data }) => setAnimalPhotos(data.videos));
   }, [searchTerm]);
 
   const handleChange = e => {
